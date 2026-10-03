@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "AppointmentRequestDemoAppRunner",
+      "request": "launch",
+      "mainClass": "com.bowiestate.wellness_app.AppointmentRequestDemoAppRunner",
+      "projectName": "wellness-app"
+    },
+    {
+      "type": "java",
+      "name": "AppointmentRequestDemo",
+      "request": "launch",
+      "mainClass": "AppointmentRequestDemo",
+      "projectName": "wellness-app"
+    },
+    {
+      "type": "java",
+      "name": "AppointmentRequestDemo",
+      "request": "launch",
+      "mainClass": "com.bowiestate.wellness_app.AppointmentRequestDemo",
+      "projectName": "wellness-app"
+    },
+    {
+      "type": "java",
+      "name": "WellnessAppTest",
+      "request": "launch",
+      "mainClass": "com.bowiestate.wellness_app.WellnessAppTest",
+      "projectName": "wellness-app"
+    },
+    {
+      "type": "java",
+      "name": "PopupTestApp",
+      "request": "launch",
+      "mainClass": "com.bowiestate.wellness_app.PopupTestApp",
+      "projectName": "wellness-app"
+    },
+    {
+      "type": "jdk",
+      "request": "launch",
+      "name": "Launch Java App",
+      "mainClass": "com.bowiestate.wellness_app.WellnessAppApplication"
+    }
+  ]
+}

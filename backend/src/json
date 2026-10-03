@@ -1,0 +1,29 @@
+{
+  "triageExample": {
+    "symptom": "chest pain",
+    "durationHours": 2,
+    "triageLevel": "EMERGENCY",
+    "reasoningSummary": "...",
+    "guidance": [
+      "Call emergency services now.",
+      "Do not drive yourself to the hospital if symptoms are severe."
+    ],
+    "nextStep": "Seek emergency medical evaluation immediately.",
+    "followUpQuestions": [
+      "Is the person awake/alert now?",
+      "..."
+    ]
+  },
+  "cleaned": "chest pain",
+  "request": {
+    "url": "http://localhost:8080/api/triage",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "symptom": "chest pain",
+      "durationHours": 1
+    }
+  }
+}
