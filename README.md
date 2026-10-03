@@ -1,7 +1,7 @@
 # Final Project: Arcadia
 
 ## Description
-Arcadia is a wellness app for Boise State students.
+Arcadia is a wellness app for Bowie State students and staff.
 It helps users connect with their provider based on what they need by offering a simple, streamlined way to reach the right support.
 
 ## Team
@@ -39,7 +39,7 @@ Install:
 cd backend
 mvn spring-boot:run
 
-### 2) Start the front end 
+### 2) Start the front end
 cd frontend
 npm install
 npm run dev
