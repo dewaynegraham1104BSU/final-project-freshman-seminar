@@ -8,12 +8,14 @@ import SchedulingPage from "./pages/SchedulingPage";
 import MentalHealthResourcesPage from "./pages/MentalHealthResourcesPage";
 import ProviderDashboardPage from "./pages/ProviderDashboardPage";
 import EmergencyGuidancePage from "./pages/EmergencyGuidancePage";
+import CareCenterPage from "./pages/CareCenterPage";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       { index: true, element: <LoginPage /> },
+      { path: "care-center", element: <CareCenterPage /> },
       { path: "symptom-checker", element: <SymptomCheckerPage /> },
       { path: "scheduling", element: <SchedulingPage /> },
       { path: "resources", element: <MentalHealthResourcesPage /> },

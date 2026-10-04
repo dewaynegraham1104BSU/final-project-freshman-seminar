@@ -7,6 +7,7 @@ export default function App() {
       <header style={{ padding: 14, borderBottom: "1px solid #333" }}>
         <nav style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
           <Link to="/">Login</Link>
+          <Link to="/care-center">Care Center</Link>
           <Link to="/symptom-checker">Symptom Checker</Link>
           <Link to="/scheduling">Scheduling</Link>
           <Link to="/resources">Resources</Link>

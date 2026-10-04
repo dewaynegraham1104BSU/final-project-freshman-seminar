@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { triageApi } from "../api/api";
 
 export default function SymptomCheckerPage() {
   const [symptomsText, setSymptomsText] = useState("");
@@ -18,21 +19,11 @@ export default function SymptomCheckerPage() {
     setResult(null);
 
     try {
-      const res = await fetch("http://localhost:8080/api/triage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          symptom: cleaned,
-          durationHours: 1,
-        }),
+      const data = await triageApi({
+        symptom: cleaned,
+        durationHours: 1,
       });
 
-      if (!res.ok) {
-        const errText = await res.text().catch(() => "");
-        throw new Error(errText || `HTTP ${res.status}`);
-      }
-
-      const data = await res.json(); // assuming backend returns JSON
       setResult(data);
     } catch (err) {
       console.error("Triage failed:", err);
@@ -45,12 +36,34 @@ export default function SymptomCheckerPage() {
   const renderGuidance = () => {
     if (!result) return null;
 
-    const guidance = result.guidance;
+    const guidance = Array.isArray(result.guidance) ? result.guidance : [];
 
-    if (Array.isArray(guidance) && guidance.length > 0) {
+    if (guidance.length > 0) {
       return (
         <ul>
           {guidance.map((s, i) => (
+            <li key={i}>{s}</li>
+          ))}
+        </ul>
+      );
+    }
+
+    return <p>—</p>;
+  };
+
+  const renderNextSteps = () => {
+    if (!result) return null;
+
+    const nextSteps = Array.isArray(result.nextSteps)
+      ? result.nextSteps
+      : Array.isArray(result.followUpQuestions)
+        ? result.followUpQuestions
+        : [];
+
+    if (nextSteps.length > 0) {
+      return (
+        <ul>
+          {nextSteps.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ul>
@@ -93,14 +106,14 @@ export default function SymptomCheckerPage() {
         >
           <h2>Result</h2>
           <p>
-            <b>Triage Level:</b> {result.level || "—"}
+            <b>Triage Level:</b> {result.level || result.triageLevel || "—"}
           </p>
 
           <h3>Guidance</h3>
           {renderGuidance()}
 
           <h3>Next Steps</h3>
-          <p>{result.nextStep || "—"}</p>
+          {renderNextSteps()}
         </div>
       )}
     </div>

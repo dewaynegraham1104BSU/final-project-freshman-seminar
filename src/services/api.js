@@ -7,7 +7,7 @@ export const api = axios.create({
 });
 
 export async function getAppointments() {
-  return api.get("/YOUR_PATH_HERE");
+  return api.get("/api/appointments");
 }
 
 export async function triageSymptom({ symptom, durationHours }) {

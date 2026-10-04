@@ -28,9 +28,12 @@ export async function getProviderAvailabilityApi() {
 }
 
 export async function createAppointmentApi(input) {
-  //  did not paste appointment mappings; keep mock for now
-  // share AppointmentController annotations,switch to real calls.
-  return mock.mockCreateAppointment(input);
+  try {
+    const res = await apiClient.post("/api/appointments", input);
+    return res.data;
+  } catch {
+    return mock.mockCreateAppointment(input);
+  }
 }
 
 export async function getMentalResourcesApi(query) {
