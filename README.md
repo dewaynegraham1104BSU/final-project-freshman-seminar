@@ -12,8 +12,8 @@ It helps users connect with their provider based on what they need by offering a
 - Ma'Kyrin Baylor
 
 ## Live Demo
-- Frontend: [LIVE_FRONTEND_URL]
-- Backend: [LIVE_BACKEND_URL]
+- Frontend: 
+- Backend: 
 
 ## Technology Stack
 - Frontend: Node.js + Vite (npm run dev / npm run build)
@@ -29,8 +29,8 @@ Install:
 
 ## Project Structure
 - `backend/` Spring Boot backend
-- `src/` (or your frontend directory) Vite frontend
-- Root files: `package.json`, Vite config files, etc. (adjust if different)
+- `src/` (frontend directory) Vite frontend
+- Root files: `package.json`, Vite config files,
 
 ## How to Run Locally
 
