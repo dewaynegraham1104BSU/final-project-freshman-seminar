@@ -18,9 +18,8 @@ import com.bowiestate.wellness_app.service.TriageService;
 @RestController
 @RequestMapping("/api")
 
-// ✅ ADD THIS: enable CORS for your frontend dev server
 @CrossOrigin(
-        origins = "http://localhost:5173",
+        origins = {"http://localhost:5173", "http://127.0.0.1:5173"},
         allowCredentials = "false",
         methods = { org.springframework.web.bind.annotation.RequestMethod.GET,
                     org.springframework.web.bind.annotation.RequestMethod.POST,

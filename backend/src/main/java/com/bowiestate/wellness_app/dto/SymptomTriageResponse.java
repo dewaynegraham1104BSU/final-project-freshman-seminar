@@ -6,15 +6,23 @@ public class SymptomTriageResponse {
     private String triageLevel; // EMERGENCY / URGENT / NON_URGENT
     private String reasoningSummary;
     private List<String> guidance;
+    private List<String> nextSteps;
     private List<String> followUpQuestions;
 
     public SymptomTriageResponse() {}
 
     public SymptomTriageResponse(String triageLevel, String reasoningSummary,
                                  List<String> guidance, List<String> followUpQuestions) {
+        this(triageLevel, reasoningSummary, guidance, List.of(), followUpQuestions);
+    }
+
+    public SymptomTriageResponse(String triageLevel, String reasoningSummary,
+                                 List<String> guidance, List<String> nextSteps,
+                                 List<String> followUpQuestions) {
         this.triageLevel = triageLevel;
         this.reasoningSummary = reasoningSummary;
         this.guidance = guidance;
+        this.nextSteps = nextSteps;
         this.followUpQuestions = followUpQuestions;
     }
 
@@ -29,4 +37,13 @@ public class SymptomTriageResponse {
 
     public List<String> getFollowUpQuestions() { return followUpQuestions; }
     public void setFollowUpQuestions(List<String> followUpQuestions) { this.followUpQuestions = followUpQuestions; }
+
+    public List<String> getNextSteps() { return nextSteps; }
+    public void setNextSteps(List<String> nextSteps) { this.nextSteps = nextSteps; }
+
+    public String getLevel() { return triageLevel; }
+    public void setLevel(String level) { this.triageLevel = level; }
+
+    public String getNextStep() { return reasoningSummary; }
+    public void setNextStep(String nextStep) { this.reasoningSummary = nextStep; }
 }

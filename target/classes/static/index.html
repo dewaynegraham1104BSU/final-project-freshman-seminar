@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellness App Interface</title>
+</head>
+<body>
+  <h2>Wellness App</h2>
+
+  <label for="text">Type something you want:</label>
+  <br/>
+  <input id="text" type="text" placeholder="e.g., I want to track my water intake" style="width: 420px;"/>
+  <button id="btn">Submit</button>
+
+  <p><strong>Result:</strong> <span id="result"></span></p>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const text = document.getElementById('text');
+    const result = document.getElementById('result');
+
+    btn.addEventListener('click', async () => {
+      const body = { text: text.value };
+
+      const res = await fetch('/api/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      const data = await res.json();
+      result.textContent = data.message;
+    });
+  </script>
+</body>
+</html>

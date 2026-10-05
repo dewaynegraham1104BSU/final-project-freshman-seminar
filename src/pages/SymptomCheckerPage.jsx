@@ -33,46 +33,6 @@ export default function SymptomCheckerPage() {
     }
   }
 
-  const renderGuidance = () => {
-    if (!result) return null;
-
-    const guidance = Array.isArray(result.guidance) ? result.guidance : [];
-
-    if (guidance.length > 0) {
-      return (
-        <ul>
-          {guidance.map((s, i) => (
-            <li key={i}>{s}</li>
-          ))}
-        </ul>
-      );
-    }
-
-    return <p>—</p>;
-  };
-
-  const renderNextSteps = () => {
-    if (!result) return null;
-
-    const nextSteps = Array.isArray(result.nextSteps)
-      ? result.nextSteps
-      : Array.isArray(result.followUpQuestions)
-        ? result.followUpQuestions
-        : [];
-
-    if (nextSteps.length > 0) {
-      return (
-        <ul>
-          {nextSteps.map((s, i) => (
-            <li key={i}>{s}</li>
-          ))}
-        </ul>
-      );
-    }
-
-    return <p>—</p>;
-  };
-
   return (
     <div style={{ padding: 24, maxWidth: 780, margin: "0 auto" }}>
       <h1>AI Symptom Checker</h1>
@@ -86,7 +46,7 @@ export default function SymptomCheckerPage() {
           value={symptomsText}
           onChange={(e) => setSymptomsText(e.target.value)}
           rows={6}
-          placeholder="Example: I have a fever and pain..."
+          placeholder="Describe each symptom, when it started, and whether it is getting worse..."
           required
         />
 
@@ -108,12 +68,29 @@ export default function SymptomCheckerPage() {
           <p>
             <b>Triage Level:</b> {result.level || result.triageLevel || "—"}
           </p>
+          {result.reasoningSummary && (
+            <p><b>Based on your description:</b> {result.reasoningSummary}</p>
+          )}
 
           <h3>Guidance</h3>
-          {renderGuidance()}
+          {Array.isArray(result.guidance) && result.guidance.length > 0 ? (
+            <ul>
+              {result.guidance.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+          ) : (
+            <p>Contact a healthcare professional for guidance specific to your symptoms.</p>
+          )}
 
           <h3>Next Steps</h3>
-          {renderNextSteps()}
+          {Array.isArray(result.nextSteps) && result.nextSteps.length > 0 ? (
+            <ul>
+              {result.nextSteps.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+          ) : (
+            <p>Arrange a medical assessment to discuss your symptoms and appropriate next steps.</p>
+          )}
+
+          <p><small>This symptom checker provides general information, not a diagnosis. If symptoms are severe or rapidly worsening, seek emergency care.</small></p>
         </div>
       )}
     </div>
